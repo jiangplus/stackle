@@ -1,6 +1,25 @@
 Rails.application.routes.draw do
-  root 'posts#index'
+  root 'entries#index'
   resources :posts
+  # resources :entries do
+  #   collection do
+  #     get :edit
+  #   end
+  # end
+
+  get 'entries' => 'entries#index'
+  get 'new_entry' => 'entries#new'
+  get 'new_dir_entry' => 'entries#new_dir'
+  get 'edit_entry' => 'entries#edit'
+  get 'uploader_entry' => 'entries#uploader'
+  get 'renaming_entry' => 'entries#renaming'
+  post 'create_entry' => 'entries#create'
+  post 'create_dir_entry' => 'entries#create_dir'
+  post 'update_entry' => 'entries#update'
+  post 'destroy_entry' => 'entries#destroy'
+  post 'upload_entry' => 'entries#upload'
+  post 'rename_entry' => 'entries#rename'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
