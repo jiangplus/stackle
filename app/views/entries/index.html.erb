@@ -35,4 +35,5 @@
 
 <%= link_to 'New Entry', new_entry_path(directory: @directory) %> <br />
 <%= link_to 'New Directory', new_dir_entry_path(directory: @directory) %> <br />
-<%= link_to 'Upload Entry', uploader_entry_path(directory: @directory) %>
+<%= link_to 'Upload Entry', uploader_entry_path(directory: @directory) %> <br />
+<%= link_to 'Build', build_site_path(directory: @directory) %> <br />

@@ -62,4 +62,11 @@ class EntriesController < ApplicationController
     redirect_to '/entries', notice: 'Post was successfully uploaded.'
   end
 
+  def build_site
+    Bundler.with_clean_env do
+      system "cd #{Rails.root}/public/content; jekyll build"
+    end
+    redirect_to '/entries', notice: 'Post was successfully uploaded.'
+  end
+
 end

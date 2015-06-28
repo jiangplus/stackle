@@ -1,12 +1,9 @@
 Rails.application.routes.draw do
   root 'entries#index'
   resources :posts
-  # resources :entries do
-  #   collection do
-  #     get :edit
-  #   end
-  # end
 
+  get 'build_site' => 'entries#build_site'
+  
   get 'entries' => 'entries#index'
   get 'new_entry' => 'entries#new'
   get 'new_dir_entry' => 'entries#new_dir'
