@@ -1,14 +1,10 @@
-<h1>Editing Entry</h1>
+<h4>Rename Entry: <em><%= "#{params[:directory]}/#{params[:filename]}" %></em></h4>
+<%= link_to 'Back', entries_path, class: 'button button-primary' %>
 
-<%= form_tag("/rename_entry", method: "post") do %>
-  <div class="field">
-    <h3><%= params[:filename] %></h3>
-    <%= hidden_field_tag :directory, params[:directory] %><br>
+<%= form_tag("/rename_entry", method: "post", multipart: true) do %>
+    <%= hidden_field_tag :directory, params[:directory] %>
     <%= hidden_field_tag :filename, params[:filename] %><br>
-    <%= label_tag 'New filename' %><br>
-    <%= text_field_tag :new_filename %><br>
+    <%= label_tag 'New filename' %>
+    <%= text_field_tag :new_filename %>
     <%= submit_tag("submit") %>
-  </div>
 <% end %>
-
-<%= link_to 'Back', entries_path %>

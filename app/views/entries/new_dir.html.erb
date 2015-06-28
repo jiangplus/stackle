@@ -1,13 +1,11 @@
-<h1>Creating Entry</h1>
+<h4>Creating Directory Entry: <em><%= "#{params[:directory]}/" %></em></h4>
+<%= link_to 'Back', entries_path, class: 'button button-primary' %>
 
 <%= form_tag("/create_dir_entry", method: "post") do %>
-  <div class="field">
-    <h3><%= params[:filename] %></h3>
-    <%= label_tag :filename %><br>
-    <%= hidden_field_tag :directory, params[:directory] %><br>
-    <%= text_field_tag :filename, params[:filename] %><br>
+    <%= label_tag :filename %>
+    <%= hidden_field_tag :directory, params[:directory] %>
+    <%= text_field_tag :filename, params[:filename] %>
     <%= submit_tag("submit") %>
-  </div>
 <% end %>
 
-<%= link_to 'Back', entries_path %>
+

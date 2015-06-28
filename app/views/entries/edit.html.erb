@@ -1,14 +1,12 @@
-<h1>Editing Entry</h1>
+<h4>Editing Entry: <em><%= "#{params[:directory]}/#{params[:filename]}" %></em></h4>
+<%= link_to 'Back', entries_path, class: 'button button-primary' %>
 
 <%= form_tag("/update_entry", method: "post") do %>
-  <div class="field">
-    <h3><%= params[:filename] %></h3>
     <%= label_tag :content %><br>
+    <%= text_area_tag :content, File.read("#{Rails.root}/public/#{params[:directory]}/#{params[:filename]}"), size: "80x60", style: 'height: 600px'  %><br>
     <%= hidden_field_tag :directory, params[:directory] %><br>
     <%= hidden_field_tag :filename, params[:filename] %><br>
-    <%= text_area_tag :content, File.read("#{Rails.root}/public/#{params[:directory]}/#{params[:filename]}") %><br>
     <%= submit_tag("submit") %>
-  </div>
 <% end %>
 
-<%= link_to 'Back', entries_path %>
+

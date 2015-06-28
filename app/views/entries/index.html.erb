@@ -1,39 +1,48 @@
-<p id="notice"><%= notice %></p>
+    <div class="navbar-spacer"></div>
+    <nav class="navbar">
+      <div class="container">
+        <ul class="navbar-list">
+          <li class="navbar-item"> <%= link_to 'New Entry', new_entry_path(directory: @directory), class: 'navbar-link' %> </li>
+          <li class="navbar-item"> <%= link_to 'New Directory', new_dir_entry_path(directory: @directory), class: 'navbar-link' %> </li>
+          <li class="navbar-item"> <%= link_to 'Upload Entry', uploader_entry_path(directory: @directory), class: 'navbar-link' %> </li>
+          <li class="navbar-item"> <%= link_to 'Build', build_site_path(directory: @directory), class: 'navbar-link' %> </li>
+        </ul>
+      </div>
+    </nav>
 
-<h1>Listing Entries</h1>
+    <p id="notice"><%= notice %></p>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Content</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @entries.each do |entry| %>
-      <tr>
-        <td><%= entry %></td>
-        <% if File::ftype("#{Rails.root}/public/#{@directory}/#{entry}") == 'file' %>
-          <td>file</td>
-          <td><%= link_to 'Link', "http://localhost:4000/#{@directory}/#{entry}"  %></td>
-          <td><%= link_to 'Edit', edit_entry_path(filename: entry, directory: @directory) %></td>
-          <td><%= link_to 'Rename', renaming_entry_path(filename: entry, directory: @directory) %></td>
-          <td><%= link_to 'Delete', destroy_entry_path(filename: entry, directory: @directory), method: :post, data: { confirm: 'Are you sure?' } %></td>
-        <% else %>
-          <td>directory</td>
-          <td><%= link_to 'Link', entries_path(directory: "#{@directory}/#{entry}")  %></td>
-          <td><%= link_to 'Rename', renaming_entry_path(filename: entry, directory: @directory) %></td>
-          <td><%= link_to 'Delete', destroy_entry_path(filename: entry, directory: @directory), method: :post, data: { confirm: 'Are you sure?' } %></td>
+    <div class="docs-section">
+      <h6 class="docs-header">Listing Entries</h6>
+      <table class="u-full-width">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th></th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+        <% @entries.each do |entry| %>
+          <tr>
+            <td><%= entry %></td>
+            <% if File::ftype("#{Rails.root}/public/#{@directory}/#{entry}") == 'file' %>
+              <td>file</td>
+              <td><%= link_to 'Link', "http://localhost:4000/#{@directory}/#{entry}"  %></td>
+              <td><%= link_to 'Rename', renaming_entry_path(filename: entry, directory: @directory) %></td>
+              <td><%= link_to 'Delete', destroy_entry_path(filename: entry, directory: @directory), method: :post, data: { confirm: 'Are you sure?' } %></td>
+              <td><%= link_to 'Edit', edit_entry_path(filename: entry, directory: @directory) %></td>
+            <% else %>
+              <td>directory</td>
+              <td><%= link_to 'Link', entries_path(directory: "#{@directory}/#{entry}")  %></td>
+              <td><%= link_to 'Rename', renaming_entry_path(filename: entry, directory: @directory) %></td>
+              <td><%= link_to 'Delete', destroy_entry_path(filename: entry, directory: @directory), method: :post, data: { confirm: 'Are you sure?' } %></td>
+              <td></td>
+            <% end %>
+          </tr>
         <% end %>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+        </tbody>
+      </table>
+    </div>
 
-<br>
-
-<%= link_to 'New Entry', new_entry_path(directory: @directory) %> <br />
-<%= link_to 'New Directory', new_dir_entry_path(directory: @directory) %> <br />
-<%= link_to 'Upload Entry', uploader_entry_path(directory: @directory) %> <br />
-<%= link_to 'Build', build_site_path(directory: @directory) %> <br />

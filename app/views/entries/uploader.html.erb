@@ -1,15 +1,13 @@
-<h1>Creating Entry</h1>
+<h4>Uploading Entry: <em><%= "#{params[:directory]}/" %></em></h4>
+<%= link_to 'Back', entries_path, class: 'button button-primary' %>
 
 <%= form_tag("/upload_entry", method: "post", multipart: true) do %>
-  <div class="field">
-    <h3><%= params[:filename] %></h3>
-    <%= label_tag :filename %><br>
-    <%= hidden_field_tag :directory, params[:directory] %><br>
-    <%= text_field_tag :filename, params[:filename] %><br>
-    <%= label_tag :content %><br>
+    <%= label_tag :filename %>
+    <%= hidden_field_tag :directory, params[:directory] %>
+    <%= text_field_tag :filename, params[:filename] %>
+    <%= label_tag :content %>
     <%= file_field_tag :content %><br>
     <%= submit_tag("submit") %>
-  </div>
 <% end %>
 
-<%= link_to 'Back', entries_path %>
+

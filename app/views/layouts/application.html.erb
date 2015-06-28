@@ -1,14 +1,38 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="utf-8">
   <title>Stackle</title>
-  <%= stylesheet_link_tag    'application', media: 'all' %>
-  <%= javascript_include_tag 'application' %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+  <meta name="description" content="">
+  <meta name="author" content="">
 
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href='//fonts.useso.com/css?family=Raleway:400,300,600' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="dist/css/normalize.css">
+  <link rel="stylesheet" href="dist/css/skeleton.css">
+  <link rel="stylesheet" href="css/custom.css">
+
+  <script src="//ajax.useso.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="css/github-prettify-theme.css">
+  <script src="js/site.js"></script>
+
+  <link rel="icon" type="image/png" href="dist/images/favicon.png">
+  <style>a.logo { color: black; text-decoration: none; }</style>
+</head>
+<body class="code-snippets-visible">
+
+  <!-- Primary Page Layout
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <div class="container">
+    <section class="header">
+      <a href="/" class="logo"><h2 class="title">Stackle: the simple blog.</h2></a>
+      <a class="button button-primary" href="https://github.com/dhg/Skeleton/releases/download/2.0.4/Skeleton-2.0.4.zip">Download</a>
+    </section>
 <%= yield %>
+
+  </div>
 
 </body>
 </html>

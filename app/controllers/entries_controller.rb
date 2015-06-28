@@ -2,7 +2,7 @@ class EntriesController < ApplicationController
 
   def index
     @directory = params[:directory] || 'content'
-    @entries = Dir.entries("#{Rails.root}/public/#{@directory}").select {|x| x != '.' && x != '..' }
+    @entries = Dir.entries("#{Rails.root}/public/#{@directory}").select {|x| !x.starts_with? '.' }
   end
 
   def show
