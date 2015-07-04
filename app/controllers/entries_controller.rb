@@ -22,19 +22,19 @@ class EntriesController < ApplicationController
 
   def rename
     File.rename("#{Rails.root}/public/#{params[:directory]}/#{params[:filename]}", "#{Rails.root}/public/#{params[:directory]}/#{params[:new_filename]}")
-    redirect_to '/entries', notice: 'Post was successfully renamed.'
+    redirect_to '/entries', notice: 'Entry was successfully renamed.'
   end
 
   def create
     f=File.open("#{Rails.root}/public/#{params[:directory]}/#{params[:filename]}", 'w+')
     f.write(params[:content])
     f.close
-    redirect_to '/entries', notice: 'Post was successfully created.'
+    redirect_to '/entries', notice: 'Entry was successfully created.'
   end
 
   def create_dir
     Dir.mkdir("#{Rails.root}/public/#{params[:directory]}/#{params[:filename]}")
-    redirect_to '/entries', notice: 'Post was successfully created.'
+    redirect_to '/entries', notice: 'Entry was successfully created.'
   end
 
   def update
@@ -42,7 +42,7 @@ class EntriesController < ApplicationController
     f=File.open("#{Rails.root}/public/#{params[:directory]}/#{params[:filename]}", 'w')
     f.write(params[:content])
     f.close
-    redirect_to '/entries', notice: 'Post was successfully updated.'
+    redirect_to '/entries', notice: 'Entry was successfully updated.'
   end
 
   def destroy
@@ -51,7 +51,7 @@ class EntriesController < ApplicationController
     else
       Dir.rmdir("#{Rails.root}/public/#{params[:directory]}/#{params[:filename]}")
     end
-    redirect_to '/entries', notice: 'Post was successfully destroyed.'
+    redirect_to '/entries', notice: 'Entry was successfully destroyed.'
   end
 
   def upload
@@ -59,14 +59,14 @@ class EntriesController < ApplicationController
     File.open("#{Rails.root}/public/#{params[:directory]}/#{params[:filename]}", 'wb') do |file|
       file.write(params[:content].read)
     end
-    redirect_to '/entries', notice: 'Post was successfully uploaded.'
+    redirect_to '/entries', notice: 'Entry was successfully uploaded.'
   end
 
   def build_site
     Bundler.with_clean_env do
       system "cd #{Rails.root}/public/content; jekyll build"
     end
-    redirect_to '/entries', notice: 'Post was successfully uploaded.'
+    redirect_to '/entries', notice: 'Entry was successfully uploaded.'
   end
 
 end

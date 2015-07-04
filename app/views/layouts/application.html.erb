@@ -14,22 +14,26 @@
   <link rel="stylesheet" href="dist/css/skeleton.css">
   <link rel="stylesheet" href="css/custom.css">
 
-  <script src="//ajax.useso.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
+  <%= csrf_meta_tags %>
   <link rel="stylesheet" href="css/github-prettify-theme.css">
   <script src="js/site.js"></script>
+
+  <link rel="stylesheet" href="pen/pen.css">
+  <script src="pen/pen.js"></script>
+  <script src="pen/markdown.js"></script>
 
   <link rel="icon" type="image/png" href="dist/images/favicon.png">
   <style>a.logo { color: black; text-decoration: none; }</style>
 </head>
 <body class="code-snippets-visible">
 
-  <!-- Primary Page Layout
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <div class="container">
     <section class="header">
       <a href="/" class="logo"><h2 class="title">Stackle: the simple blog.</h2></a>
-      <a class="button button-primary" href="https://github.com/dhg/Skeleton/releases/download/2.0.4/Skeleton-2.0.4.zip">Download</a>
     </section>
+
 <%= yield %>
 
   </div>
